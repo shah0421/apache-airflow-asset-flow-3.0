@@ -78,7 +78,7 @@ This document describes how to set up your local development environment using D
 
 
 
-Findings
+## **Findings**
 
 * The initial CSV contains 60 city records.
 
