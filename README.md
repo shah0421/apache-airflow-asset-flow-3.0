@@ -80,20 +80,20 @@ This document describes how to set up your local development environment using D
 
 Findings
 
-The initial CSV contains 60 city records.
+* The initial CSV contains 60 city records.
 
-After removing duplicates, 59 unique cities remain.
+* After removing duplicates, 59 unique cities remain.
 
-Four records had commas inside the population column, which caused the CSV to interpret the values as multiple columns. These columns were recombined to correctly form the population value for each affected city.
+* Four records had commas inside the population column, which caused the CSV to interpret the values as multiple columns. These columns were recombined to correctly form the population value for each affected city.
 
-One city name contained a text-encoding issue ("SÃ£o Paulo"), which was corrected to "São Paulo".
+* One city name contained a text-encoding issue ("SÃ£o Paulo"), which was corrected to "São Paulo".
 
-One city, Bishkek, KY, did not return any weather data from the API.
+* One city, Bishkek, KY, did not return any weather data from the API.
 
-After merging the cleaned population data (CSV) with the weather data (API), the final dataset contains 58 cities.
+* After merging the cleaned population data (CSV) with the weather data (API), the final dataset contains 58 cities.
 
-During the merge, only the following fields were retained:
-city, country, population, temperature, weather_description.
-All other fields were dropped for consistency.
+* During the merge, only the following fields were retained:
+  city, country, population, temperature, weather_description.
+  All other fields were dropped for consistency.
 
-These 58 cleaned and enriched records are stored in the PostgreSQL database.
+* These 58 cleaned and enriched records are stored in the PostgreSQL database.
