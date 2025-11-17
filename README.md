@@ -11,7 +11,7 @@ This document describes how to set up your local development environment using D
    - For detailed installation instructions, refer to the [Docker documentation](https://docs.docker.com/desktop/).  
 
 2. **UV (Astral)**  
-   - UV is a high-performance Python package and environment manager. (https://docs.astral.sh/uv/getting-started/installation/)
+   - UV is a high-performance Python package and environment manager. [UV Installation](https://docs.astral.sh/uv/getting-started/installation/)
    - Install UV by running:  
      ```bash
      curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -60,8 +60,8 @@ This document describes how to set up your local development environment using D
     Connection Type = postgres
     Description = This is airflow Database
     Host = postgres
-    login = airflow
-    password = airflow
+    login = your_login
+    password = your_password
     port = 5432
 
     ```
@@ -72,11 +72,28 @@ This document describes how to set up your local development environment using D
     Description = smtp for email service
     Host = smtp.gmail.com
     login = shahriar.email01@gmail.com
-    password = <<APP Password is being created>>
+    password = <<"APP Password is being created">>
     port = 587
 
 
 
 
+Findings
 
+The initial CSV contains 60 city records.
 
+After removing duplicates, 59 unique cities remain.
+
+Four records had commas inside the population column, which caused the CSV to interpret the values as multiple columns. These columns were recombined to correctly form the population value for each affected city.
+
+One city name contained a text-encoding issue ("SÃ£o Paulo"), which was corrected to "São Paulo".
+
+One city, Bishkek, KY, did not return any weather data from the API.
+
+After merging the cleaned population data (CSV) with the weather data (API), the final dataset contains 58 cities.
+
+During the merge, only the following fields were retained:
+city, country, population, temperature, weather_description.
+All other fields were dropped for consistency.
+
+These 58 cleaned and enriched records are stored in the PostgreSQL database.
