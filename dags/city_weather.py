@@ -5,6 +5,7 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 import os
 import airflow.settings
 from airflow.utils.email import send_email
+from datetime import datetime
 logger = logging.getLogger(__name__)
 
 from config import (
@@ -312,10 +313,12 @@ def cleanup_operations(call_weather_api: Asset, context:Context):
 )
 def send_email_notification():
     try:
+        execution_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        html_content = EMAIL_BODY.format(execution_date=execution_date)
         send_email(
             to=EMAIL_TO,
             subject=EMAIL_SUBJECT,
-            html_content=EMAIL_BODY,
+            html_content=html_content,
             conn_id="smtp",
         )
 

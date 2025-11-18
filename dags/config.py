@@ -35,9 +35,7 @@ EMAIL_BODY = """
 <h3>Weather Data Pipeline Execution Summary</h3>
 <p>The weather data pipeline has completed successfully.</p>
 <ul>
-    <li><strong>Execution Date:</strong> {{ ds }}</li>
-    <li><strong>DAG ID:</strong> {{ dag.dag_id }}</li>
-    <li><strong>Run ID:</strong> {{ run_id }}</li>
+    <li><strong>Execution Date: </strong> {execution_date}</li>
 </ul>
 <p>Weather data has been successfully loaded into the database.</p>
 <p><strong>Database Location:</strong> ./weather_data.db</p>

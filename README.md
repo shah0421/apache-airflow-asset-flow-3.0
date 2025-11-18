@@ -135,7 +135,7 @@ execute command: airflow dags trigger load_csv_file
 ## ✅  **Data Stored and Email Sample**
 
 <img src="images/Screenshot 2025-11-18 at 5.08.34 PM.png" alt ="App homepage" width="400"/>
-<img src="images/Screenshot 2025-11-18 at 5.06.15 PM.png" alt ="App homepage" width="400"/>
+<img src="images/Screenshot 2025-11-18 at 6.04.30 PM.png" alt ="App homepage" width="400"/>
 
 ---
 
