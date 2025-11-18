@@ -12,6 +12,7 @@ DB_PATH = './weather_data.db'
 OPENWEATHER_API_KEY = 'effb6c25b72e632a7b3c713828b06b83'
 OPENWEATHER_API_URL = "http://api.openweathermap.org/data/2.5/weather"
 API_TIMEOUT = 10  # seconds
+OUTPUT_DATA_PATH = '/opt/airflow/dags/final_output.csv'
 
 # Database configuration
 DB_TABLE_NAME = 'weather_data'

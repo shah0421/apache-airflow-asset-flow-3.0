@@ -43,14 +43,19 @@ This document describes how to set up your local development environment using D
     uv pip install pandas
     uv pip install apache-airflow-providers-postgres
     ```
-4. **Run the Application / Server**
+
+---
+
+## ✅ **Run the Application / Server**
 
     Start your Docker-based services (e.g., Airflow) by running:
     ```
     docker compose up
     ```
 
-5. **Create Connections**
+---
+
+## ✅ **Create Connections**
 
     From airflow UI, click "Admin" >> "Connections" >> "Add Connection"
     ```
@@ -72,21 +77,26 @@ This document describes how to set up your local development environment using D
     Description = smtp for email service
     Host = smtp.gmail.com
     login = shahriar.email01@gmail.com
-    password = <<"APP Password is being created">>
+    password = rfqw chwq zgvx wcjw
     port = 587
 
 
 
+<img src="images/Screenshot 2025-11-18 at 2.21.20 PM.png" alt ="App homepage" width="400"/>
+<img src="images/Screenshot 2025-11-18 at 2.22.13 PM.png" alt ="App homepage" width="400"/>
 
-## **Findings**
+---
+
+
+## ✅  **Data Cleansing**
 
 * The initial CSV contains 60 city records.
 
 * After removing duplicates, 59 unique cities remain.
 
-* Four records had commas inside the population column, which caused the CSV to interpret the values as multiple columns. These columns were recombined to correctly form the population value for each affected city.
-
 * One city name contained a text-encoding issue ("SÃ£o Paulo"), which was corrected to "São Paulo".
+
+* Four records had commas inside the population column, which caused the CSV to interpret the values as multiple columns. These columns were recombined to correctly form the population value for each affected city.
 
 * One city, Bishkek, KY, did not return any weather data from the API.
 
@@ -97,3 +107,35 @@ This document describes how to set up your local development environment using D
   All other fields were dropped for consistency.
 
 * These 58 cleaned and enriched records are stored in the PostgreSQL database.
+
+## ✅  **Materialize Airflow Assets**
+
+First you need to click on the asset tab on the left pane and click on any asset to see the diagram and then click on the toggle buttons in the diagram to activate all the assets.
+
+<img src="images/Screenshot 2025-11-18 at 2.20.09 PM.png" alt ="App homepage" width="400"/>
+
+---
+
+You can materialize airflow assets either from UI (Selecting the asset tab choosing the asset and clicking Trigger button from the top right)
+
+<img src="images/Screenshot 2025-11-18 at 2.18.21 PM.png" alt ="App homepage" width="400"/>
+<img src="images/Screenshot 2025-11-18 at 2.20.35 PM.png" alt ="App homepage" width="400"/>
+
+---
+
+or from docker desktop in Containers section, click airflow-scheduler then click Exec tab then:
+type /bin/bash 
+execute command: airflow dags trigger load_csv_file
+
+<img src="images/Screenshot 2025-11-18 at 3.10.20 PM.png" alt ="App homepage" width="400"/>
+<img src="images/Screenshot 2025-11-18 at 3.09.44 PM.png" alt ="App homepage" width="400"/>
+
+---
+
+## ✅  **Data Stored and Email Sample**
+
+<img src="images/Screenshot 2025-11-18 at 5.08.34 PM.png" alt ="App homepage" width="400"/>
+<img src="images/Screenshot 2025-11-18 at 5.06.15 PM.png" alt ="App homepage" width="400"/>
+
+---
+

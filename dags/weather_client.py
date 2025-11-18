@@ -8,49 +8,12 @@ logger = logging.getLogger(__name__)
 
 
 # Pydantic models for OpenWeatherMap API response
-class WeatherDescription(BaseModel):
-    """Weather condition description"""
-    description: str
-    main: str
-    id: int
-    icon: str
-
-
-class MainWeatherData(BaseModel):
-    """Main weather data (temperature, humidity, pressure)"""
-    temp: float
-    feels_like: float
-    temp_min: float
-    temp_max: float
-    pressure: int
-    humidity: int
-
-
-class WindData(BaseModel):
-    """Wind information"""
-    speed: float
-    deg: Optional[int] = None
-    gust: Optional[float] = None
-
-
-class OpenWeatherMapResponse(BaseModel):
-    """Complete OpenWeatherMap API response"""
-    weather: List[WeatherDescription]
-    main: MainWeatherData
-    wind: WindData
-    name: str
-    cod: int = Field(default=200)
-
-
 class WeatherInfo(BaseModel):
-    """Standardized weather information for our pipeline"""
+    """Validated weather information"""
     city: str
     country: str
     temperature: float
     weather_description: str
-    humidity: int
-    wind_speed: float
-    timestamp: str
 
     def to_dict(self) -> Dict:
         """Convert to dictionary for XCom compatibility"""
@@ -82,16 +45,17 @@ class OpenWeatherMapClient:
 
             if response.status_code == 200:
                 data = response.json()
-                weather_info_full = self._parse_weather_response(data, city, country_code)
+
+                # Build minimal WeatherInfo using Pydantic
+                weather_info = WeatherInfo(
+                    city=city,
+                    country=country_code,
+                    temperature=data["main"]["temp"],
+                    weather_description=data["weather"][0]["description"]
+                )
+
                 logger.info(f"Successfully retrieved weather for {city}")
-                # getting rid of the extra fields
-                weather_info = weather_info_full.model_dump(include={
-                    "city",
-                    "country",
-                    "temperature",
-                    "weather_description"
-                })
-                return weather_info
+                return weather_info.model_dump()
 
             elif response.status_code == 404:
                 logger.warning(f"City not found in API: {city}, {country_code}")
@@ -152,21 +116,4 @@ class OpenWeatherMapClient:
 
         return weather_data, failed_cities
 
-    def _parse_weather_response(self, data: Dict, city: str, country_code: str) -> Dict:
-        """Parse API response using Pydantic models for validation"""
-        # Validate and parse the API response
-        api_response = OpenWeatherMapResponse(**data)
-
-        # Create standardized weather info
-        weather_info = WeatherInfo(
-            city=city,
-            country=country_code,
-            temperature=api_response.main.temp,
-            weather_description=api_response.weather[0].description,
-            humidity=api_response.main.humidity,
-            wind_speed=api_response.wind.speed,
-            timestamp=datetime.now().isoformat()
-        )
-
-        return weather_info
 

@@ -3,11 +3,8 @@ import logging
 import pandas as pd
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 import os
-# from airflow.providers.smtp.hooks.smtp import SmtpHook
 import airflow.settings
-from airflow.providers.smtp.operators.smtp import EmailOperator
 from airflow.utils.email import send_email
-# from airflow.utils.log.logging_mixin import LoggingMixin
 logger = logging.getLogger(__name__)
 
 from config import (
@@ -16,6 +13,7 @@ from config import (
     OPENWEATHER_API_KEY,
     OPENWEATHER_API_URL,
     API_TIMEOUT,
+    OUTPUT_DATA_PATH,
     DB_PATH,
     DB_TABLE_NAME,
     XCOM_CITIES_DATA_KEY,
@@ -231,12 +229,17 @@ def load_to_database(merge_data: Asset, context: Context):
             # Verify the load worked
             logger.info(f"executing........ SELECT COUNT(*) FROM PUBLIC.{DB_TABLE_NAME}")
             cursor.execute(f"SELECT COUNT(*) FROM PUBLIC.{DB_TABLE_NAME}")
-            
             count = cursor.fetchone()[0]
+            logger.info(f"Total records in {DB_TABLE_NAME}: {count}")
             
-            # Sample first 5 rows from table
-            cursor.execute(f"SELECT * FROM PUBLIC.{DB_TABLE_NAME} limit 5")
-            for row in cursor.fetchmany(5):
+            # getting the stored data into a dataframe and saving to CSV for validation
+            cursor.execute(f"SELECT * FROM PUBLIC.{DB_TABLE_NAME}")           
+            rows = cursor.fetchall()
+            cols = [desc[0] for desc in cursor.description]
+            pd.DataFrame(rows, columns=cols).to_csv(OUTPUT_DATA_PATH, index=False)
+
+            logger.info("First 5 records in the database:")
+            for row in rows[:5]:
                 logger.info(row)
             
             logger.info(f"Successfully loaded {count} records to database")

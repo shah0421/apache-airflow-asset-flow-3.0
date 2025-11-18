@@ -1,0 +1,59 @@
+city,country,population,temperature,weather_description
+London,UK,8982000,4.97,broken clouds
+New York,US,8419600,7.52,overcast clouds
+Tokyo,JP,13929286,7.16,few clouds
+Berlin,DE,3644826,3.67,light rain
+Sydney,AU,5312163,24.04,clear sky
+Toronto,CA,2731571,4.03,clear sky
+Paris,FR,2148327,6.27,overcast clouds
+Mumbai,IN,20411000,22.99,smoke
+São Paulo,BR,12325232,21.24,clear sky
+Mexico City,MX,9209944,24.97,scattered clouds
+Cairo,EG,9500000,18.42,clear sky
+Bangkok,TH,10500000,23.94,overcast clouds
+Istanbul,TR,15462452,18.42,clear sky
+Los Angeles,US,3980400,15.87,overcast clouds
+Buenos Aires,AR,2890151,23.91,scattered clouds
+Kolkata,IN,14900000,19.97,haze
+Lagos,NG,14000000,24.99,scattered clouds
+Rio de Janeiro,BR,6748000,25.22,broken clouds
+Shanghai,CN,24183300,4.92,clear sky
+Moscow,RU,11920000,1.38,broken clouds
+Seoul,KR,9776000,-4.24,clear sky
+Jakarta,ID,10770487,23.66,mist
+Lima,PE,9750000,18.14,clear sky
+Chennai,IN,10000000,23.3,mist
+Hong Kong,HK,7500000,12.75,overcast clouds
+Santiago,CL,5000000,28.99,clear sky
+Madrid,ES,3223000,5.55,clear sky
+Rome,IT,2873000,11.18,few clouds
+Athens,GR,664046,19.32,few clouds
+Lisbon,PT,504718,13.42,few clouds
+Hanoi,VN,8000000,14.0,light rain
+Bangalore,IN,8443675,19.5,mist
+Dubai,AE,3331420,24.96,haze
+Kuala Lumpur,MY,1800000,22.9,overcast clouds
+Addis Ababa,ET,5000000,13.49,few clouds
+Nairobi,KE,4397000,16.62,few clouds
+Stockholm,SE,975904,-8.14,broken clouds
+Oslo,NO,1546706,-1.53,overcast clouds
+Copenhagen,DK,794128,1.94,few clouds
+Helsinki,FI,655281,-3.46,few clouds
+Brussels,BE,1211035,5.03,broken clouds
+Vienna,AT,1897491,0.29,clear sky
+Zurich,CH,421878,1.53,overcast clouds
+Budapest,HU,1752286,2.23,clear sky
+Prague,CZ,1301132,-1.32,clear sky
+Warsaw,PL,1790658,3.52,broken clouds
+Bucharest,RO,1883425,4.21,heavy intensity rain
+Sofia,BG,1241675,9.88,moderate rain
+Belgrade,RS,1160000,5.1,moderate rain
+Sarajevo,BA,275524,-0.05,mist
+Tallinn,EE,430000,-4.81,clear sky
+Riga,LV,632614,-0.54,broken clouds
+Vilnius,LT,580020,0.52,overcast clouds
+Tbilisi,GE,1130000,6.84,clear sky
+Yerevan,AM,1070000,3.09,mist
+Astana,KZ,1200000,-3.03,mist
+Dushanbe,TJ,800000,6.9,clear sky
+Tashkent,UZ,2500000,8.97,smoke
