@@ -16,7 +16,7 @@ This document describes how to set up your local development environment using D
      ```bash
      curl -LsSf https://astral.sh/uv/install.sh | sh
      ```  
-     :contentReference[oaicite:1]{index=1}  
+
    - After installation, verify with:  
      ```bash
      uv --version
