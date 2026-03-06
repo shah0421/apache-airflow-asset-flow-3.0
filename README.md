@@ -1,6 +1,16 @@
+# Summary of the Project
+
+This project implements a complete ETL (Extract, Transform, Load) data pipeline that integrates data from multiple sources, including CSV files and external weather APIs. The pipeline performs automated data ingestion, cleansing, and transformation to ensure data consistency and quality.
+
+Using Apache Airflow 3.0 for workflow orchestration, the system processes city population data, resolves encoding issues, removes duplicates, and merges it with real-time weather data retrieved from an API. The cleaned and enriched dataset is then stored in a PostgreSQL database for further analysis.
+
+The pipeline is containerized with Docker, enabling easy local setup and reproducible environments. Once the ETL workflow completes, the system automatically sends email notifications via SMTP to report the status of the job.
+
+This project demonstrates practical implementation of data engineering concepts, including workflow orchestration, automated data pipelines, data cleaning, API integration, and containerized development environments.
+
 # Project Local Setup Guide
 
-This document describes how to set up your local development environment using Docker and `uv` (Astral’s fast Python package manager).
+This document describes how to set up your local development environment using Docker and `uv`.
 
 ---
 
